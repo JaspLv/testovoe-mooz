@@ -1,0 +1,25 @@
+@import url('./_normalise.scss');
+
+*:active,
+:hover,
+:focus {
+	outline: 0;
+	outline-offset: 0;
+}
+
+.wrapper {
+	min-height: 100vh;
+}
+
+body {
+	background-color: #ebeaea;
+}
+
+.container {
+	max-width: 1240px;
+	margin: 0 auto;
+	padding: 1rem;
+	@media (min-width: 1024px) {
+		padding: 3rem;
+	}
+}
