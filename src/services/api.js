@@ -4,8 +4,8 @@ import { API_URL } from './urls'
 const axiosInstance = axios.create({
 	baseURL: API_URL,
 	params: {
-		i: 'tt3896198',
-		apikey: '8523cbb8',
+		i: import.meta.env.VITE_API_I,
+		apikey: import.meta.env.VITE_API_KEY,
 	},
 	headers: {
 		'Content-Type': 'application/json',
