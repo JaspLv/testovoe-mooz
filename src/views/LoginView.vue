@@ -3,7 +3,12 @@
 		<div class="login__content">
 			<div class="login__title">Login</div>
 			<form @submit.prevent="handleSubmit" class="login__form">
-				<TextField name="username" label="Enter username" v-model="username" />
+				<TextField
+					name="username"
+					label="Enter username"
+					v-model="username"
+					placeholder="Type your username"
+				/>
 				<BaseButton classes="login__button">
 					<template #title> Login </template>
 				</BaseButton>
@@ -13,8 +18,8 @@
 </template>
 
 <script setup>
-import BaseButton from '@/components/BaseButton.vue'
-import TextField from '@/components/TextField.vue'
+import BaseButton from '@/components/common/BaseButton.vue'
+import TextField from '@/components/common/TextField.vue'
 import { useUserStore } from '@/stores/userStore'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'

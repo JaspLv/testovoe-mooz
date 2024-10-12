@@ -1,15 +1,20 @@
 <template>
-	<form @submit="handleSubmit">
-		<TextField name="search" v-model="searchFiled" />
+	<form @submit="handleSubmit" class="catalog-search">
+		<TextField
+			name="search"
+			v-model="searchField"
+			placeholder="Type film name..."
+		/>
 	</form>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import TextField from '@/components/common/TextField.vue'
+import { ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import TextField from './TextField.vue'
 
-const searchFiled = ref('')
+const searchField = ref('')
+
 const router = useRouter()
 const route = useRoute()
 
@@ -18,9 +23,23 @@ const handleSubmit = event => {
 	router.push({
 		name: route.name,
 		query: {
-			searchValue: searchFiled.value,
+			searchValue: searchField.value,
 			page: 1,
 		},
 	})
 }
+
+watch(
+	route,
+	() => {
+		searchField.value = route.query.searchValue || ''
+	},
+	{ immediate: true }
+)
 </script>
+
+<style scoped lang="scss">
+.catalog-search {
+	flex-grow: 2;
+}
+</style>

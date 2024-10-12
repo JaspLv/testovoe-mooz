@@ -4,10 +4,18 @@ const loadFilms = params => {
 	return api
 		.get('', { params })
 		.then(response => {
-			if (response.data.Error === 'Movie not found!') {
+			if (response.data.Response === 'False') {
 				return { items: [], pages: 1 }
 			}
-			return { items: response.data.Search, pages: response.data.totalResults }
+
+			if (response.data.Search) {
+				return {
+					items: response.data.Search,
+					totalResults: Number(response.data.totalResults),
+				}
+			}
+
+			return { items: [response.data], pages: 1, totalResults: 1 }
 		})
 		.catch(error => {
 			throw new Error(error.message)

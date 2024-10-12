@@ -7,10 +7,13 @@
 </template>
 
 <script setup>
+import { useUserStore } from '@/stores/userStore'
 import { markRaw, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import EmptyLayout from './layouts/EmptyLayout.vue'
 import MainLayout from './layouts/MainLayout.vue'
+
+const userStore = useUserStore()
 
 const route = useRoute()
 
@@ -25,8 +28,11 @@ const changeLayout = layoutString => {
 	layout.value = markRaw(lookup[layoutString])
 }
 
+watch(() => {
+	userStore.loadUser()
+})
+
 watch(route, () => {
-	console.log('TESTS')
 	changeLayout(route.meta.layout + 'Layout')
 })
 </script>

@@ -7,7 +7,6 @@
 			:type="type"
 			:value="modelValue"
 			@input="handleInput($event)"
-			:placeholder="label"
 			class="field__input"
 		/>
 	</div>
