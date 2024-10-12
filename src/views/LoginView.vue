@@ -9,7 +9,7 @@
 					v-model="username"
 					placeholder="Type your username"
 				/>
-				<BaseButton classes="login__button">
+				<BaseButton :classes="['login__button']" type="submit">
 					<template #title> Login </template>
 				</BaseButton>
 			</form>
